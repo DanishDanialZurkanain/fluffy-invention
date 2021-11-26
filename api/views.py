@@ -1,7 +1,8 @@
 from typing import List
 from django.contrib.auth.models import User
+from django.db.models.query import QuerySet
 from rest_framework.response import Response
-from rest_framework.generics import ListAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView
 from base.models import Room
 
 from .serializers import UserSerializer, RoomSerializer, CreateRoomSerializer
@@ -36,3 +37,6 @@ class CreateRoomView(CreateAPIView):
 
     serializer_class = CreateRoomSerializer
 
+class DeleteRoomView(DestroyAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer

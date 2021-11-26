@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserListView, UserDetailView, RoomListView, RoomDetailView, CreateRoomView
+from .views import UserListView, UserDetailView, RoomListView, RoomDetailView, CreateRoomView, DeleteRoomView
 
 app_name = 'api'
 
@@ -9,4 +9,5 @@ urlpatterns = [
     path('room-list', RoomListView.as_view(), name='room-list'),
     path('room-detail', RoomDetailView.as_view(), name='room-detail'),
     path('create-room', CreateRoomView.as_view(), name='create-room'),
+    path('delete-room/<str:pk>', DeleteRoomView.as_view(), name='delete-room'),
 ]
