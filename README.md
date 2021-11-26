@@ -11,3 +11,4 @@ Use for advancing Django knowledge
 ## To Do
 - [x] Add Postgres
 - [ ] Customize User Model
+- [ ] Test Case
