@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
-from django.contrib.auth.models import User
-from base.models import Room
+from django.contrib.auth import get_user_model
+from base.models import Room, User
 
 class UserSerializer(ModelSerializer):
     class Meta:

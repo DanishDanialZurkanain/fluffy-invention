@@ -2,11 +2,9 @@ from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
-from .forms import RoomForm, UserForm
-from .models import Message, Room, Topic
+from .forms import RoomForm, UserForm, UserRegisterForm
+from .models import Message, Room, Topic, User
 
 # Create your views here.
 
@@ -42,14 +40,14 @@ def logout_page(request):
 
 def register_page(request):
     page = 'register'
-    form = UserCreationForm()
+    form = UserRegisterForm()
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
 
         if form.is_valid():
             user = form.save(commit=False)
-            user.usernmae = user.username.lower()
+            user.username = user.username.lower()
             user.save()
 
             login(request, user) 
@@ -184,7 +182,7 @@ def update_user(request):
     form = UserForm(instance=user)
 
     if request.method == 'POST':
-        form = UserForm(request.POST, instance=user)
+        form = UserForm(request.POST, request.FILES, instance=user)
 
         if form.is_valid():
             form.save()
