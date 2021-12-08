@@ -1,5 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+
+
+class User(AbstractUser):
+    email = models.EmailField(unique=True, null=True)
+    bio = models.TextField(max_length=500, default='')
+    image = models.ImageField(null=True, default='avatar.svg')
 
 
 class Topic(models.Model):

@@ -1,6 +1,7 @@
-from collections import namedtuple
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
-from django.urls.resolvers import URLPattern
+
 from . import views
 
 urlpatterns = [
@@ -18,3 +19,5 @@ urlpatterns = [
     path('topics/', views.topicsPage, name="topics"),
     path('activity/', views.activityPage, name="activity"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

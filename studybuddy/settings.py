@@ -72,8 +72,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'studybuddy.wsgi.application'
+AUTH_USER_MODEL = 'base.User'
 
+WSGI_APPLICATION = 'studybuddy.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -135,6 +136,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/images/'
+MEDIA_ROOT = BASE_DIR / 'static/images'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
